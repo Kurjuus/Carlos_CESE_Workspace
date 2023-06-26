@@ -103,13 +103,53 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
-
+  uint8_t bFlag = 0xFF;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+	  if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13))
+	  {
+		  if(bFlag == 0xFF)
+			  bFlag = 0x00;
+		  else
+			  bFlag = 0xFF;
+	  }
+
+	  if(bFlag == 0xFF)
+	  {
+		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,1);	// LED 1
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,0);	// LED 1
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,1);	// LED 2
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,0);	// LED 2
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,1);	// LED 3
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,0);	// LED 3
+		  HAL_Delay(200);
+	  }
+	  else
+	  {
+		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,1);	// LED 1
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,0);	// LED 1
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,1);	// LED 2
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,0);	// LED 2
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,1);	// LED 3
+		  HAL_Delay(200);
+		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,0);	// LED 3
+		  HAL_Delay(200);
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -304,11 +344,11 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : USER_Btn_Pin */
-  GPIO_InitStruct.Pin = USER_Btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  /*Configure GPIO pin : BUTTON_BLUE_Pin */
+  GPIO_InitStruct.Pin = BUTTON_BLUE_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(BUTTON_BLUE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
   GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
