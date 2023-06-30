@@ -104,6 +104,8 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
   uint8_t bFlag = 0xFF;
+  int8_t i = 0;
+  uint32_t Led[] = {LD1_Pin,LD2_Pin,LD3_Pin};
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,40 +116,33 @@ int main(void)
 	  if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13))
 	  {
 		  if(bFlag == 0xFF)
+		  {
 			  bFlag = 0x00;
+			  i = 2;
+		  }
 		  else
+		  {
 			  bFlag = 0xFF;
+			  i = 0;
+		  }
 	  }
 
-	  if(bFlag == 0xFF)
+	  HAL_GPIO_WritePin(GPIOB,Led[i],1);
+	  HAL_Delay(200);
+	  HAL_GPIO_WritePin(GPIOB,Led[i],0);
+	  HAL_Delay(200);
+
+	  if(bFlag)
 	  {
-		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,1);	// LED 1
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,0);	// LED 1
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,1);	// LED 2
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,0);	// LED 2
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,1);	// LED 3
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,0);	// LED 3
-		  HAL_Delay(200);
+		  i++;
+		  if(i >= 3)
+			  i = 0;
 	  }
 	  else
 	  {
-		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,1);	// LED 1
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD1_Pin,0);	// LED 1
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,1);	// LED 2
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD3_Pin,0);	// LED 2
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,1);	// LED 3
-		  HAL_Delay(200);
-		  HAL_GPIO_WritePin(GPIOB,LD2_Pin,0);	// LED 3
-		  HAL_Delay(200);
+		  i--;
+		  if(i <= -1)
+			  i = 2;
 	  }
 
     /* USER CODE END WHILE */
