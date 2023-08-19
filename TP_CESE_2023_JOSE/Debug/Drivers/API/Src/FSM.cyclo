@@ -1,0 +1,6 @@
+../Drivers/API/Src/FSM.c:37:6:FSM_init	1
+../Drivers/API/Src/FSM.c:59:6:FSM_update	10
+../Drivers/API/Src/FSM.c:101:6:SENSOR_TESTING_Handler	2
+../Drivers/API/Src/FSM.c:125:6:IDLE_Handler	1
+../Drivers/API/Src/FSM.c:133:6:READING_Handler	2
+../Drivers/API/Src/FSM.c:158:6:ERROR_STATE_Handler	2

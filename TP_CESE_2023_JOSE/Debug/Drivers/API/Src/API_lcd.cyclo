@@ -1,0 +1,6 @@
+../Drivers/API/Src/API_lcd.c:19:6:lcdSendCommand	1
+../Drivers/API/Src/API_lcd.c:37:6:lcdSendData	1
+../Drivers/API/Src/API_lcd.c:55:6:lcd_init	1
+../Drivers/API/Src/API_lcd.c:80:6:lcdSendString	2
+../Drivers/API/Src/API_lcd.c:90:6:lcdPutCur	4
+../Drivers/API/Src/API_lcd.c:115:6:lcdClear	2

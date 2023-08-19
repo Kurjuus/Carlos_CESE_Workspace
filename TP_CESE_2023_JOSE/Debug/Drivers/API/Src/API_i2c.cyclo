@@ -1,0 +1,6 @@
+../Drivers/API/Src/API_i2c.c:12:6:initI2CPort	1
+../Drivers/API/Src/API_i2c.c:25:8:i2cInit	4
+../Drivers/API/Src/API_i2c.c:51:6:i2cSendString	1
+../Drivers/API/Src/API_i2c.c:58:6:i2cSendStringSize	1
+../Drivers/API/Src/API_i2c.c:63:6:i2cReceiveString	1
+../Drivers/API/Src/API_i2c.c:68:6:ErrorHandlerUser	1
