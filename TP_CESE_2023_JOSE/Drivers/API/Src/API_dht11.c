@@ -69,9 +69,9 @@ void DTH_Read(uint8_t *data)
 			delay_us(40);
 			if(!(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_8)))
 			{
-				data[k]&= ~(1<<(7-j));
+				data[k]&= ~(1<<(7-j)); //This line is used to save a 1 in data register. This register is interpreted as the data sended by DHT11 sensor to the MCU
 			}
-			else data[k]|= (1<<(7-j));
+			else data[k]|= (1<<(7-j));     //This line is used to save a 0 in data register. This register is interpreted as the data sended by DHT11 sensor to the MCU
 			while((HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_8)));
 		}
 	}
